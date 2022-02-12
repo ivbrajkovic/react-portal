@@ -8,7 +8,7 @@ type Teleport = (
 
 type OpenGate = (
   key: string | ReactElement,
-  value: ReactElement | undefined,
+  value?: ReactElement | undefined,
 ) => void;
 type CloseGate = (key: string | undefined) => void;
 
