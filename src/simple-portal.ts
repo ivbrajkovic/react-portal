@@ -10,7 +10,7 @@ type OpenGate = (
   key: string | ReactElement,
   value?: ReactElement | undefined,
 ) => void;
-type CloseGate = (key: string | undefined) => void;
+type CloseGate = (key?: string | undefined) => void;
 
 const COMMON_GATE = 'commonGate';
 const DEFAULT_PROPERTIES = new Set([
