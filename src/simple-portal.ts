@@ -12,7 +12,7 @@ type OpenGate = (
 ) => void;
 type CloseGate = (key: string | undefined) => void;
 
-const COMMON = 'common';
+const COMMON_GATE = 'commonGate';
 const DEFAULT_PROPERTIES = new Set([
   'getObserversCount',
   'unobserveAll',
@@ -22,8 +22,9 @@ const DEFAULT_PROPERTIES = new Set([
 const store = makeObservable({});
 
 const _teleport: Teleport = (key, value) => {
-  const _key = typeof key === 'string' ? key : COMMON;
-  const _value = typeof key === 'string' ? value : key;
+  const isKeyValidString = typeof key === 'string';
+  const _key = isKeyValidString ? key : COMMON_GATE;
+  const _value = isKeyValidString ? value : key;
   store[_key] = _value;
   !_value && delete store[_key];
 };
@@ -52,7 +53,9 @@ export const usePortal = (
 ): [state: unknown, setState: (state: unknown) => void] =>
   useSimpleState(store, gateName);
 
-export const PortalGate: React.FC<{ name: string }> = ({ name = COMMON }) => {
+export const PortalGate: React.FC<{ name?: string }> = ({
+  name = COMMON_GATE,
+}) => {
   const [element] = usePortal(name);
   const isValidReactElement =
     typeof element === 'object' && React.isValidElement(element);
