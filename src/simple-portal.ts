@@ -49,12 +49,14 @@ export const clearGate = (keys: string | string[] | undefined): void => {
 
 export const usePortal = (
   gateName: string,
-): [state: unknown, setState: (state: unknown) => void] => useSimpleState(store, gateName);
+): [state: unknown, setState: (state: unknown) => void] =>
+  useSimpleState(store, gateName);
 
 export const PortalGate: React.FC<{ name: string }> = ({ name = COMMON }) => {
   const [element] = usePortal(name);
   const isValidReactElement =
     typeof element === 'object' && React.isValidElement(element);
+
   // eslint-disable-next-line unicorn/no-null
   return isValidReactElement ? element : null;
 };

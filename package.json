@@ -30,8 +30,10 @@
     "tsc": "tsc",
     "lint": "npx eslint . --ext .ts,.tsx",
     "build:rollup": "rollup -c rollup.config.ts",
+    "watch:rollup": "rollup -w -c rollup.config.ts",
     "npm:publish": "npm publish --access public",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "watch": "nodemon --watch ./src -e js,ts,tsx --exec rollup -c rollup.config.ts'"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",
