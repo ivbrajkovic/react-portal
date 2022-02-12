@@ -3,7 +3,7 @@ import { makeObservable, useSimpleState } from '@ivbrajkovic/simple-state';
 
 type Teleport = (
   key: string | ReactElement | undefined,
-  value: ReactElement | undefined,
+  value?: ReactElement | undefined,
 ) => void;
 
 type OpenGate = (
